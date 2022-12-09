@@ -95,7 +95,7 @@
     </style>
   </head>
   <body>
-    <form action="" method="post" autocomplete="off">
+    <form action="/mvcpattern/controller/controller.php" method="post" autocomplete="off">
       <h3>Register Here</h3>
 
       <label for="username">Username</label>
@@ -105,6 +105,7 @@
         id="username"
         name="username"
         value=""
+        required="Required Username"
       />
 
       <label for="email">Email</label>
@@ -114,6 +115,7 @@
         id="email"
         name="email"
         value=""
+        required="Required Email"
       />
 
       <label for="password">Password</label>
@@ -123,6 +125,7 @@
         id="password"
         name="password"
         value=""
+        required="Please Enter Password"
       />
 
       <label for="password">Confirm Password</label>
@@ -132,10 +135,11 @@
         id="confirmpassword"
         name="confirmpassword"
         value=""
+        required="Please ReEnter Password"
       />
 
       <div class="col-12 form-group">
-        <input type="submit" class="btn" name="submit" />
+        <input type="submit" class="btn" name="registered" />
       </div>
     </form>
 

@@ -1,9 +1,3 @@
-<?php
-// include_once "controller/controller.php";
-require '../controller/controller.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +6,7 @@ require '../controller/controller.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script> -->
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <title>Blogspot</title>
 
     <style>
@@ -67,11 +61,20 @@ a{
   display: block;
 }
 
+.button-container{
+  display:flex;
+  align-content:center;
+  justify-content:center;
+}
+
 button{
 position:center;
+font-size:1rem;
+outline:none;
 margin-top:0px;
 margin-bottom: 20px;
-width:35%;
+width:50%;
+height:2rem;
 background-color: #2a8ab9;
 color:#e5e5e5;
 border-radius: 10px;
@@ -94,6 +97,25 @@ color: #fff;
 }
 #table-data tr:nth-child(odd){
 background: #ecf0f1;
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
 }
     </style>
 </head>
@@ -127,15 +149,15 @@ background: #ecf0f1;
   </div>
 <div class="pull-right">
     <ul class="nav pull-right">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome<?php echo $user["username"]; ?></a>
+        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome</a>
         <ul class="dropdown-menu">
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="../model/logout.php">Logout</a></li>
         </ul>
         </li>
     </ul>
 </div> 
 </nav>
-  <div class="container" id="table-data">
+  <div class="container" id="table-data" style="overflow-x:auto;">
      <table class="table table-striped sortable" style="width:100%">
         <thead>
             <tr>
@@ -151,9 +173,11 @@ background: #ecf0f1;
         <tbody>
 
 <?php
-include_once ("controller/controller.php");
+include_once("../model/functions.php");
+include_once ("../controller/controller.php");
+$conn = new mysqli("localhost", "root", "", "product");
 $getQuery = "SELECT * FROM prolist";  
-$result = mysqli_query($conn, $getQuery);  
+$result = mysqli_query($conn,$getQuery);  
 $total_rows = mysqli_num_rows($result);
 $total_pages = ceil ($total_rows / $limit);
 $initial_page = ($page_number-1) * $limit;   
@@ -172,10 +196,11 @@ while ($row = mysqli_fetch_array($result)) {
 <td><?php echo $row["size"]; ?></td>
 <td><img src="<?php echo $row['image']; ?>" height="100" width="100"></td>
 <td>
+  <div class="button-container">
 <button type="button">
   <a href="editproduct.php?id=<?php echo $row['id']; ?>">Edit</a></button>
 <button type="button">
-  <a href="deletedata.php?id=<?php echo $row['id']; ?>">Delete</a></button>
+  <a href="../controller/deletedata.php?id=<?php echo $row['id']; ?>">Delete</a></button></div>
 </td>
 </tr>
   <?php

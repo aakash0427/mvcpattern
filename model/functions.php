@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 class Database{
   public $db_host = "localhost";
   public $db_user = "root";
@@ -21,7 +19,7 @@ class Database{
 
   public function edit($table,$id,$productname,$sku,$price, $size, $folder)
   {
-  $res = mysqli_query($this->conn,"UPDATE $table SET id='$id', productname='$productname', sku='$sku', price='$price', size='$size', image='$folder' WHERE id=".$id);
+  $res = mysqli_query($this->conn,"UPDATE $table SET id='$id', productname='$productname', sku='$sku', price='$price', size='$size', image='$folder' WHERE id='$id'");
   return $res;
   }
 

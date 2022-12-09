@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +106,7 @@ button{
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password" id="password">
 
-        <button type="submit" name="submit" class="button">Log In</button>
+        <button type="submit" name="loginned" class="button">Log In</button>
         <br>
 
         <p class="text-center">Not a member? <a data-toggle="tab" href="register.php">Sign Up</a></p>

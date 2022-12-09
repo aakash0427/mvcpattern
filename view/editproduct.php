@@ -206,11 +206,12 @@
         <h3>Edit Product</h3>
 
         <?php
+        $conn = new mysqli("localhost", "root", "", "product");
         $id = $_GET['id'];
         $rows = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM prolist WHERE id = $id"));
         ?>
 
-        <input type="hidden" id="id" value="<?php echo $rows['id'];?>" />
+        <input type="hidden" id="id" name="id" value="<?php echo $rows['id'];?>" />
 
         <label for="productname">Product Name</label>
         <input
@@ -284,7 +285,7 @@
           />
         </div>
 
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="update">Submit</button>
       </form>
     </div>
 

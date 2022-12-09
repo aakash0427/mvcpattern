@@ -92,7 +92,9 @@
       /*form*/
       form {
         margin-top: 20px;
-        width: 800px;
+        padding: 12px 12px 12px 0; 
+        display:inline-block;
+        width: 100%;
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 50px 35px;
       }
@@ -147,6 +149,7 @@
   </head>
 
   <body>
+    
     <nav class="navbar navbar-expand-lg bg-custom-2 bg-primary">
       <a class="navbar-brand" href="#">PRODUCT</a>
       <button
@@ -185,7 +188,7 @@
               Dropdown
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="csvform.php">IMPORT CSV</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
@@ -196,8 +199,9 @@
     </nav>
 
     <div class="container">
+      <div class="col-md-8">
       <form
-        action="controller/controller.php"
+        action="home.php?action=insert"
         method="post"
         id="myTable"
         enctype="multipart/form-data"
@@ -271,6 +275,7 @@
 
         <button type="submit" name="submit">Submit</button>
       </form>
+    </div>
     </div>
 
     <script
